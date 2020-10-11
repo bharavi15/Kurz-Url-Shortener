@@ -3,6 +3,9 @@
 Kurz-Url-Shortener is the only URL shortener you will ever need. It's written with help of [Node.js](https://nodejs.org), [Express](https://expressjs.com), and [MongoDB](https://www.mongodb.com)
 
 It also uses rate-limiter to limit the number of requests from same IP address. This prevents flooding of requests and database.
+
+Visit:- [https://kurz-bu.herokuapp.com](https://kurz-bu.herokuapp.com/) and get started.
+
 ## Installation
 
 Use Git clone to clone into the repository.
