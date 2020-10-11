@@ -19,13 +19,11 @@ const urlSchema = new mongoose.Schema({
 }, {
 	timestamps: true
 })
-// urlSchema.index({
-// 	createdAt: 1
-// }
-// , {
-// 	expireAfterSeconds: parseInt(process.env.SHORT_URL_EXPIRY_IN_SECONDS) || 2592000 //One month
-// }
-// );
+urlSchema.index({
+	createdAt: 1
+}, {
+	expireAfterSeconds: parseInt(process.env.SHORT_URL_EXPIRY_IN_SECONDS) || 2592000 //One month
+});
 
 urlSchema.pre('save', function (next) {
 	const url = this;
