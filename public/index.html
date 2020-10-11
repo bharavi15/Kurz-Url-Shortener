@@ -49,8 +49,9 @@
 					console.log("status", status)
 					console.log("xhr", xhr)
 					$("#resultContainer").html(`<div style="margin:2%">
-					<h5>Your Long URL- <a target="_blank" href="${data.actualUrl}">${data.actualUrl}</a></h5>
-					<h5>Your Short URL- <a target="_blank" href="${data.shortUrl}">${data.shortUrl}</a></h5>
+					<h5>Long URL- <a target="_blank" href="${data.actualUrl}">${data.actualUrl}</a></h5>
+					<h5>Short URL- <a target="_blank" href="${data.shortUrl}">${data.shortUrl}</a></h5>
+					<h5>Short URL will expire on- ${formatDate(new Date(data.expireAt))}</h5>
 					<h5>QR Code-<br><img src="${data.qrCodeImage}"/></h5>
 					</div>`).show()
 				}).fail(function (data, status, xhr) {
@@ -96,6 +97,10 @@
 				}
 			})
 		});
+
+		function formatDate(date) {
+			return date.toString().substring(3, 16) + " " + date.toTimeString().substring(0, 8);
+		}
 	</script>
 </head>
 

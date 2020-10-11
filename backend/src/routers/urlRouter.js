@@ -25,7 +25,8 @@ router.post('/new', limiter, async (req, res, next) => {
 		await url.save()
 		const dataToBeSent = {
 			actualUrl: url.actualUrl,
-			shortUrl: req.headers.origin + "/" + url.shortUrl
+			shortUrl: req.headers.origin + "/" + url.shortUrl,
+			expireAt: new Date(new Date().getTime() + ((parseInt(process.env.SHORT_URL_EXPIRY_IN_SECONDS) || 2592000) * 1000)).getTime()
 		}
 		dataToBeSent.qrCodeImage = await qrcode.toDataURL(dataToBeSent.shortUrl)
 		res.status(201).send(dataToBeSent)
